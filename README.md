@@ -1,3 +1,3 @@
-# simulation
+# swift-game-simulation
 
-A description of this package.
+Small "game simulation" that I'm using to learn Swift (version 4.1)
