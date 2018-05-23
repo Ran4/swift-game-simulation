@@ -87,16 +87,13 @@ class Player: CustomStringConvertible  {
             self.inventory.contains(.Potion) ? .Potion :
                                                nil
                                                
-        func getDamageAndDescription(_ attackWeapon: Item?)
-                -> (damage: Int, description: String) {
+        let (damage, attackedWithString): (Int, String) = {
             switch attackWeapon {
                 case .some(.Staff): return (5, "his staff")
                 case .some(.Potion): return (4, "a potion")
                 case nil: return (2, "his hands")
             }
-        }
-        
-        let (damage, attackedWithString) = getDamageAndDescription(attackWeapon)
+        }()
                                                
         other.hp -= damage
         print("\(self.name) attacked \(other.name)",
@@ -107,6 +104,7 @@ class Player: CustomStringConvertible  {
     
     func laugh(atPlayer other: Player, reason: LaughReason) {
         print("\(self.name) laughed at \(other.name)", terminator: ", ")
+        
         switch reason {
         case .TargetIsWeak:
             print("because \(other.name) is so weak...")
